@@ -42,9 +42,11 @@
 
     <!-- Hero Section -->
 
-    <header class="hero">
+    <header class="hero hero-typed">
 
         <div class="hero-content">
+
+            <p id="heroQuery" class="hero-query" data-text="SELECT * FROM career WHERE focus = 'data + ai';"></p>
 
             <h1>Shirdi Vamsi Avinash Koliparthi</h1>
 
@@ -76,6 +78,32 @@
 
     </header>
 
+    <!-- Quick Stats -->
+
+    <div class="stats">
+
+        <div class="stat reveal">
+            <span class="stat-number" data-target="5" data-suffix="+">0</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+
+        <div class="stat reveal">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Enterprise Employers</span>
+        </div>
+
+        <div class="stat reveal">
+            <span class="stat-number" data-target="2">0</span>
+            <span class="stat-label">Master's Degrees</span>
+        </div>
+
+        <div class="stat reveal">
+            <span class="stat-number" data-target="4">0</span>
+            <span class="stat-label">AI/ML Portfolio Artifacts</span>
+        </div>
+
+    </div>
+
     <!-- Highlights -->
 
     <section class="highlights">
@@ -84,7 +112,7 @@
 
         <div class="cards">
 
-            <div class="card">
+            <div class="card reveal">
 
                 <h3>Current Role</h3>
 
@@ -98,7 +126,7 @@
 
             </div>
 
-            <div class="card">
+            <div class="card reveal">
 
                 <h3>Professional Experience</h3>
 
@@ -112,7 +140,7 @@
 
             </div>
 
-            <div class="card">
+            <div class="card reveal">
 
                 <h3>Education</h3>
 
@@ -149,7 +177,7 @@
 
         <h2>About This Portfolio</h2>
 
-        <div class="card">
+        <div class="card reveal">
 
         <p>
 
@@ -185,6 +213,8 @@
         </p>
 
     </footer>
+
+    <script src="script.js" defer></script>
 
 </body>
 

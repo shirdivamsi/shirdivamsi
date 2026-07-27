@@ -32,6 +32,7 @@ html{scroll-behavior:smooth;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+  .reveal{opacity:1 !important;transform:none !important;}
 }
 
 body{
@@ -111,26 +112,12 @@ nav a{
   text-transform:uppercase;
   padding:8px 12px;
   border-radius:3px;
-  position:relative;
   transition:color .2s ease, background .2s ease;
-}
-nav ul a::after{
-  content:"";
-  position:absolute;
-  left:12px;
-  right:12px;
-  bottom:4px;
-  height:2px;
-  background:var(--accent-amber);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .25s ease;
 }
 nav ul a:hover{
   color:#fff;
   background:rgba(255,255,255,0.06);
 }
-nav ul a:hover::after{transform:scaleX(1);}
 .logo a:hover{color:var(--accent-amber);}
 
 /* ===========================
@@ -145,27 +132,30 @@ header,.page-header{
   overflow:hidden;
 }
 
-/* subtle graph-paper texture in the hero, drifting very slowly for ambient life */
+/* soft radial glow for extra depth behind hero content */
+header{
+  background:
+    radial-gradient(560px 320px at 50% 0%, rgba(200,129,30,0.14), transparent 70%),
+    radial-gradient(480px 300px at 85% 100%, rgba(14,124,116,0.16), transparent 70%),
+    var(--ink-900);
+}
+
+/* subtle graph-paper texture in the hero */
 header::after,.page-header::after{
   content:"";
   position:absolute;
-  inset:-42px;
+  inset:0;
   background-image:
     linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
   background-size:42px 42px;
   mask-image:linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 85%);
   pointer-events:none;
-  animation:grid-drift 26s linear infinite;
-}
-@keyframes grid-drift{
-  0%{background-position:0 0;}
-  100%{background-position:42px 42px;}
 }
 
 header::before,.page-header::before{
   content:"SELECT * FROM career WHERE focus = 'data + ai';";
-  display:inline-block;
+  display:block;
   font-family:var(--font-mono);
   font-size:13px;
   letter-spacing:0.5px;
@@ -173,21 +163,33 @@ header::before,.page-header::before{
   margin-bottom:22px;
   position:relative;
   z-index:1;
-  white-space:nowrap;
-  overflow:hidden;
-  border-right:2px solid var(--accent-amber);
-  width:0;
-  animation:
-    type-query 2.1s steps(44,end) 0.3s forwards,
-    blink-cursor .8s step-end infinite 0.3s;
 }
-@keyframes type-query{
-  from{width:0;}
-  to{width:45ch;}
+
+/* index.html hero types this line via JS instead of the static ::before */
+.hero-typed::before{content:none;}
+.hero-query{
+  display:block;
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:0.5px;
+  color:var(--accent-amber);
+  margin-bottom:22px;
+  position:relative;
+  z-index:1;
+  min-height:1.2em;
 }
-@keyframes blink-cursor{
-  0%,100%{border-color:var(--accent-amber);}
-  50%{border-color:transparent;}
+.hero-query .cursor{
+  display:inline-block;
+  width:7px;
+  height:14px;
+  margin-left:2px;
+  background:var(--accent-amber);
+  vertical-align:-2px;
+  animation:cursor-blink 1s step-end infinite;
+}
+@keyframes cursor-blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
 }
 
 header h1,.page-header h1{
@@ -236,13 +238,6 @@ section{
   box-shadow:0 1px 2px rgba(11,18,32,0.04);
 }
 
-body{counter-reset:row-index;}
-section{counter-increment:row-index;animation:row-in .5s ease both;}
-@keyframes row-in{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
 section h2{
   font-family:var(--font-display);
   color:var(--ink-900);
@@ -251,9 +246,6 @@ section h2{
   padding-left:18px;
   margin-bottom:24px;
   position:relative;
-  display:flex;
-  align-items:baseline;
-  gap:12px;
 }
 section h2::before{
   content:"";
@@ -264,16 +256,6 @@ section h2::before{
   width:4px;
   background:var(--accent-amber);
   border-radius:2px;
-}
-section h2::after{
-  content:"row_" counter(row-index, decimal-leading-zero);
-  order:2;
-  font-family:var(--font-mono);
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:0.5px;
-  color:var(--ink-500);
-  text-transform:none;
 }
 section h3{
   font-family:var(--font-display);
@@ -297,33 +279,13 @@ section li strong{color:var(--ink-900);}
   margin-top:8px;
 }
 
-.projects,.cards{perspective:1200px;}
-
 .card{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:4px;
   padding:26px 26px 24px;
   position:relative;
-  overflow:hidden;
-  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-  transform-style:preserve-3d;
-}
-
-/* scan-line sweep, revealed on hover */
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, var(--accent-teal-soft) 0%, transparent 60%);
-  opacity:0;
-  transform:translateY(-100%);
-  transition:transform .5s ease, opacity .5s ease;
-  pointer-events:none;
-}
-.card:hover::after{
-  opacity:.5;
-  transform:translateY(0);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
 /* punch-card style index tab, numbered by position */
@@ -344,12 +306,10 @@ section li strong{color:var(--ink-900);}
 .projects,.cards{counter-reset:card-index;}
 
 .card:hover{
-  transform:translateY(-6px) rotateX(2deg);
+  transform:translateY(-4px);
   border-color:var(--accent-teal);
-  box-shadow:0 14px 28px rgba(11,18,32,0.12);
+  box-shadow:0 10px 24px rgba(11,18,32,0.09);
 }
-.card:nth-child(even):hover{transform:translateY(-6px) rotateX(2deg) rotateY(-1deg);}
-.card:nth-child(odd):hover{transform:translateY(-6px) rotateX(2deg) rotateY(1deg);}
 
 /* subtle color coding by position, echoes the original nth-child accents */
 .card:nth-child(1)::before{background:var(--ink-900);}
@@ -359,6 +319,88 @@ section li strong{color:var(--ink-900);}
 
 .card h3{margin-top:6px;}
 .card h3:first-child{margin-top:2px;}
+
+/* ===========================
+   Scroll reveal (JS toggles .is-visible)
+=========================== */
+.reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .5s ease, transform .5s ease;
+  transition-delay:var(--reveal-delay,0ms);
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* ===========================
+   Stats strip
+=========================== */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:18px;
+  width:min(92%,1160px);
+  margin:-28px auto 44px;
+  position:relative;
+  z-index:2;
+}
+.stat{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:22px 18px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(11,18,32,0.08);
+}
+.stat-number{
+  display:block;
+  font-family:var(--font-display);
+  font-size:32px;
+  font-weight:700;
+  color:var(--accent-amber);
+  line-height:1.2;
+}
+.stat-label{
+  display:block;
+  margin-top:4px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.4px;
+  text-transform:uppercase;
+  color:var(--ink-500);
+}
+
+/* ===========================
+   Tag pills — replaces plain bullet lists
+=========================== */
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  list-style:none;
+  padding:0;
+  margin:14px 0;
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  letter-spacing:0.3px;
+  color:var(--ink-700);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:6px 14px;
+  transition:border-color .18s ease, color .18s ease, background .18s ease;
+}
+.tag:hover{
+  border-color:var(--accent-teal);
+  color:var(--accent-teal);
+  background:var(--accent-teal-soft);
+}
 
 /* ===========================
    Buttons
@@ -387,21 +429,7 @@ section li strong{color:var(--ink-900);}
   background:var(--accent-amber);
   color:var(--ink-900);
   border:1px solid var(--accent-amber);
-  position:relative;
-  overflow:hidden;
 }
-.btn::before,.button::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-60%;
-  width:40%;
-  height:100%;
-  background:rgba(255,255,255,0.35);
-  transform:skewX(-20deg);
-  transition:left .45s ease;
-}
-.btn:hover::before,.button:hover::before{left:130%;}
 .btn::after,.button::after{
   content:"→";
   font-family:var(--font-body);
@@ -523,4 +551,6 @@ footer p:first-child{color:#fff;font-size:14px;}
   .projects,.cards{grid-template-columns:1fr;}
   .comparison-table{font-size:13px;}
   .comparison-table th,.comparison-table td{padding:10px;}
+  .stats{grid-template-columns:repeat(2,1fr);margin-top:-20px;}
+  .stat-number{font-size:26px;}
 }
