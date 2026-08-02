@@ -96,6 +96,36 @@ The objective of this activity was to build a solid conceptual foundation in mac
 
 <section>
 
+<h2>Process</h2>
+
+<div class="card">
+
+<p>
+
+I accessed the Machine Learning Training Methods Coach through the SchoolAI space provided by my instructor and worked through the activity in the following steps:
+
+</p>
+
+<ul>
+
+<li>Reviewed the assignment rubric first to understand what depth of engagement and reasoning was expected before starting the conversation.</li>
+
+<li>Worked through all seven guiding questions in sequence, from supervised learning through the role of data in training.</li>
+
+<li>For each question, answered first in my own words, then translated the concept into a concrete example from my background in SQL, reporting, and data analysis rather than repeating the coach's phrasing.</li>
+
+<li>Responded to the coach's follow-up prompts, which repeatedly asked me to explain the same idea a second way or apply it to a new example, pushing the answers from definitions toward applied reasoning.</li>
+
+<li>Reviewed the full conversation afterward and used it as the basis for this artifact, keeping the examples and reasoning that were genuinely mine rather than restating the coach's explanations.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section>
+
 <h2>Key Concepts Explored</h2>
 
 <div class="card">
@@ -108,11 +138,23 @@ A model learns from labeled data, comparing its predictions to known correct ans
 
 </p>
 
+<p>
+
+<strong>Real-world example and issue resolved:</strong> In the invoice example, the specific issue is that "late payment" is only a reliable label if it is defined consistently, for instance if one team's data marks an invoice late after 5 days past due while another team uses a different grace period, the model will learn an inconsistent threshold and its predictions will not hold up across customer segments. The resolution is standardizing the label definition before training and then checking that model accuracy holds consistently across different customer groups, not just as a single aggregate score.
+
+</p>
+
 <h3>Unsupervised Learning</h3>
 
 <p>
 
 With no labeled "answer key," the model searches for structure or natural groupings within the data itself. I connected this to customer segmentation, where transactions are grouped by behavioral similarity without predefined categories, similar to exploratory data analysis.
+
+</p>
+
+<p>
+
+<strong>Real-world example and issue resolved:</strong> The specific issue in customer segmentation is that clustering purely on transaction amount can group a customer who makes one large purchase a year with a customer who makes frequent small purchases, even though their actual buying behavior is very different. The resolution is incorporating behavioral features such as purchase frequency and product category alongside amount, then validating that the resulting segments actually differ in real behavior, like repeat purchase rate, before using them to make a business decision.
 
 </p>
 
@@ -124,11 +166,51 @@ An agent learns through trial and error, taking actions and receiving rewards or
 
 </p>
 
+<p>
+
+<strong>Real-world example and issue resolved:</strong> A relevant example is an automated approval workflow that learns which decisions reduce risk over time. The specific issue is that the agent can settle on a policy that performs reasonably well and stop testing alternatives, missing a better policy it never tried. The resolution is deliberately keeping some ongoing exploration built into the policy, rather than locking in permanently on the first strategy that produces acceptable results.
+
+</p>
+
 <h3>The Role of Algorithms, Training Steps, Iteration, and Data</h3>
 
 <p>
 
 Algorithms provide the rules that govern how a model updates itself based on feedback. Training a model generally follows a repeatable process: preparing data, splitting it into training and test sets, making predictions, measuring error, and adjusting accordingly. Repetition allows the model to make small, incremental corrections rather than solving the problem in a single pass, and the quality and variety of the training data ultimately determines how well the model generalizes to new situations.
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Evidence of Engagement</h2>
+
+<div class="card">
+
+<p>
+
+The excerpt below is a direct sample from the recorded conversation, showing the coach's feedback on my invoice example and how I extended the reasoning further rather than simply agreeing.
+
+</p>
+
+<p style="font-style:italic;">
+
+<strong>Coach:</strong> "That's a fantastic analogy. Using the invoice example makes it really concrete — you've got the features (payment terms, customer, amount) and the target (late or not late), and the model is essentially tuning its 'formula' until the calculated field matches reality."
+
+</p>
+
+<p style="font-style:italic;">
+
+<strong>My response:</strong> "Yes, that makes sense. I'd explain it like building and validating a report against known historical results. Say I'm predicting which invoices will be paid late. I'd feed the model past invoice data along with the known outcome, was it actually late or not. The model makes a prediction, checks it against the real outcome, and if it's wrong, it adjusts its internal weights slightly, kind of like tweaking the logic in a query or formula until your calculated field matches the actual result."
+
+</p>
+
+<p>
+
+The full recorded transcript, covering all seven questions and follow-up exchanges, is available to my instructor directly within the SchoolAI space as required by the assignment instructions.
 
 </p>
 
@@ -154,13 +236,19 @@ I selected this artifact because it demonstrates my ability to engage critically
 
 <p>
 
-This activity reinforced how closely foundational machine learning concepts relate to the analytical work I already do as a Data Analyst. Explaining supervised learning through the lens of invoice prediction, or unsupervised learning through customer segmentation, helped me see that many of the underlying principles, comparing predictions to known outcomes, iterating to reduce error, and relying on quality data, are extensions of practices I already use in reporting and data validation.
+I built this artifact with two audiences in mind: my instructor, who is evaluating whether I engaged critically with the concepts rather than restating them, and future portfolio readers, such as potential employers, who would want to see applied reasoning rather than textbook definitions. That is why each concept here is paired with a specific real-world example and a concrete issue it could cause, rather than a general definition alone.
 
 </p>
 
 <p>
 
-Reinforcement learning stood out as the most conceptually distinct approach, since it depends on a continuous feedback loop rather than a static, historical dataset. Recognizing that distinction helped clarify when each training method is appropriate for a given problem.
+The most useful feedback came from the coach's habit of asking me to explain the same idea a second time, in a different example. When I first explained reinforcement learning in fairly general terms, the coach's follow-up questions pushed me to ground it in a specific workflow instead, which is what shaped the approval-workflow example above. I revised my answers in the moment based on that push rather than keeping my first, more general version.
+
+</p>
+
+<p>
+
+This activity reinforced how closely foundational machine learning concepts relate to the analytical work I already do as a Data Analyst. Explaining supervised learning through invoice prediction, or unsupervised learning through customer segmentation, helped me see that comparing predictions to known outcomes, iterating to reduce error, and relying on quality data are extensions of practices I already use in reporting and data validation. Reinforcement learning stood out as the most conceptually distinct approach, since it depends on a continuous feedback loop rather than a static, historical dataset.
 
 </p>
 
@@ -187,6 +275,8 @@ Beyond the technical content, this exercise demonstrated the value of AI-assiste
 <li>Translate abstract machine learning concepts into real-world business scenarios.</li>
 
 <li>Distinguish between supervised, unsupervised, and reinforcement learning approaches.</li>
+
+<li>Identify specific issues each training approach can cause and how to resolve them.</li>
 
 <li>Explain the role of algorithms, iteration, and data quality in model training.</li>
 
