@@ -13,7 +13,7 @@
     }
 
     items.forEach(function (el, i) {
-      el.style.setProperty("--reveal-delay", Math.min(i % 6, 5) * 70 + "ms");
+      el.style.setProperty("--reveal-delay", Math.min(i % 6, 5) * 40 + "ms");
     });
 
     var observer = new IntersectionObserver(
