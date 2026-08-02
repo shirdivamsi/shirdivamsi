@@ -297,6 +297,37 @@ section li strong{color:var(--ink-900);}
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
+/* die-cut corner notch — the orientation cut on a physical punch card,
+   read here as the "record" motif made literal rather than decorative */
+.card::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:22px;
+  height:22px;
+  background:
+    linear-gradient(
+      135deg,
+      transparent calc(50% - 0.5px),
+      var(--line) calc(50% - 0.5px),
+      var(--line) calc(50% + 0.5px),
+      var(--paper) calc(50% + 0.5px)
+    );
+  transition:background .18s ease;
+  pointer-events:none;
+}
+.card:hover::after{
+  background:
+    linear-gradient(
+      135deg,
+      transparent calc(50% - 0.5px),
+      var(--accent-teal) calc(50% - 0.5px),
+      var(--accent-teal) calc(50% + 0.5px),
+      var(--accent-teal-soft) calc(50% + 0.5px)
+    );
+}
+
 /* punch-card style index tab, numbered by position */
 .card::before{
   content:"REC" counter(card-index, decimal-leading-zero);
@@ -477,6 +508,22 @@ section li strong{color:var(--ink-900);}
   border-radius:6px;
   border:1px solid var(--line);
   box-shadow:var(--shadow-lg);
+}
+
+/* ===========================
+   Query caption — echoes the hero's typed SQL line,
+   used to introduce data tables inline in a light card
+=========================== */
+.query-caption{
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:0.3px;
+  color:var(--accent-amber);
+  background:var(--ink-900);
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:3px;
+  margin-bottom:16px;
 }
 
 /* ===========================
