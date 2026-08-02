@@ -72,11 +72,11 @@ Reasoning Through Training Method Decisions with an AI Coach
 
 <section>
 
-<h2>Project Overview</h2>
+<h2>Objective</h2>
 
 <p>
 
-This artifact documents a guided conversation with the Data Challenge Scenarios Coach, an AI chatbot built around real decision-making scenarios involving supervised learning, unsupervised learning, and reinforcement learning. Rather than answering conceptual definitions, this activity required reasoning through data-driven scenarios, explaining what the data itself indicated, why a particular training method fit the situation, and what could go wrong if the data, labels, or approach were flawed.
+The objective of this activity was to practice applying machine learning training concepts directly to data-driven decisions rather than definitions alone. Each scenario required identifying what the data itself indicated, labeled versus unlabeled, structured versus exploratory, feedback-driven versus static, and using that reasoning to justify which training approach actually fit the situation.
 
 </p>
 
@@ -84,13 +84,31 @@ This artifact documents a guided conversation with the Data Challenge Scenarios 
 
 <section>
 
-<h2>Objective</h2>
+<h2>Process</h2>
+
+<div class="card">
 
 <p>
 
-The objective of this activity was to practice applying machine learning training concepts directly to data-driven decisions rather than definitions alone. Each scenario pushed further into how the characteristics of a dataset, labeled versus unlabeled, structured versus exploratory, feedback-driven versus static, determine which training approach actually fits the problem.
+I accessed the Data Challenge Scenarios Coach through the SchoolAI space provided by my instructor and worked through the activity in the following steps:
 
 </p>
+
+<ul>
+
+<li>Reviewed the assignment rubric first to understand what "engagement and reasoning" needed to look like before starting the conversation.</li>
+
+<li>Worked through three scenarios covering supervised learning, unsupervised learning, and reinforcement learning, one at a time.</li>
+
+<li>For each scenario, stated a clear position and explained my reasoning using the specific characteristics of the data involved, rather than restating the coach's explanation.</li>
+
+<li>Responded to the coach's follow-up and probing questions, which pushed me to go a level deeper each time, from identifying a concept, to applying it to a concrete example, to explaining what could go wrong if the approach were applied incorrectly.</li>
+
+<li>Revised how I framed later answers based on the coach's feedback, for example shifting from general explanations toward more specific, data-grounded reasoning after the coach pointed out when an answer was still surface-level.</li>
+
+</ul>
+
+</div>
 
 </section>
 
@@ -108,6 +126,12 @@ Working through this scenario reinforced that supervised learning depends entire
 
 </p>
 
+<p>
+
+<strong>Real-world example and issue resolved:</strong> A concrete case discussed was medical image labeling, where different reviewers disagreed on borderline scans, and scans from one machine type were labeled inconsistently due to image quality differences. The specific issue was that the model would learn to key off the imaging equipment rather than the actual medical feature. The resolution reasoned through was standardizing the labeling criteria across reviewers and separating training data by source before evaluating whether the model's accuracy held up consistently across all sources, rather than trusting a single aggregate accuracy score.
+
+</p>
+
 <h3>Unsupervised Learning and Meaningful Structure</h3>
 
 <p>
@@ -116,11 +140,57 @@ This scenario focused on clustering data with no predefined categories, such as 
 
 </p>
 
+<p>
+
+<strong>Real-world example and issue resolved:</strong> In the grocery transaction example, the specific issue identified was clustering grouping shoppers purely by total dollar amount spent, which mathematically separated transactions but mixed a family doing a weekly shop with someone buying a few expensive specialty items into the same group. The resolution discussed was re-evaluating which features actually drive meaningful behavioral differences, such as purchase frequency and category mix rather than raw spend, before acting on any cluster with a business decision like a targeted promotion.
+
+</p>
+
 <h3>Reinforcement Learning and the Exploration Tradeoff</h3>
 
 <p>
 
 This scenario examined how an agent learns a strategy through trial and error, adjusting its actions based on rewards and penalties over time. A key insight was the tradeoff between exploration and exploitation: an agent that stops exploring once it finds a strategy that works can settle into a "good enough" solution and never discover a better one, unless it continues testing alternatives alongside what already works.
+
+</p>
+
+<p>
+
+<strong>Real-world example and issue resolved:</strong> Using the maze-navigation example, the specific issue was an agent settling on the first path that reliably reached the coin and never testing alternatives again, even though a faster path existed elsewhere in the maze. The resolution reasoned through was building in ongoing exploration, occasionally trying different moves even after a working strategy was found, so the agent keeps testing for a better path instead of permanently locking in on the first success.
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Evidence of Engagement</h2>
+
+<div class="card">
+
+<p>
+
+The excerpt below is a direct sample from the recorded conversation, showing the coach's probing follow-up and my own reasoning in response, rather than a restated definition.
+
+</p>
+
+<p style="font-style:italic;">
+
+<strong>Coach:</strong> "Can you give me a concrete example of this in action? Like, imagine you're training an agent to play a simple video game, maybe something like navigating a maze or collecting coins. Walk me through what the agent would actually do step by step as it's learning."
+
+</p>
+
+<p style="font-style:italic;">
+
+<strong>My response:</strong> "Picture an agent in a maze, wandering randomly at first. Every time it moves toward a coin it gets a reward, every dead end gets little or no reward. Over many runs, it starts favoring the moves that paid off before, until it's built a strategy for getting through the maze efficiently instead of just wandering."
+
+</p>
+
+<p>
+
+The full recorded transcript, including all three scenarios and follow-up exchanges, is available to my instructor directly within the SchoolAI space as required by the assignment instructions.
 
 </p>
 
@@ -162,19 +232,25 @@ I selected this artifact because it moves beyond explaining machine learning con
 
 <p>
 
+I built this artifact for two audiences at once: my instructor, who is evaluating whether I engaged critically rather than superficially, and future readers of my portfolio, such as potential employers, who are evaluating whether I can reason through applied AI problems. Because of that, I framed the write-up around decisions and justifications rather than a simple recap of definitions, and I included a direct excerpt from the conversation as evidence rather than only summarizing it, so the reasoning is visible and verifiable rather than just asserted.
+
+</p>
+
+<p>
+
+The most valuable feedback came directly from the coach's follow-up questions. Several times, after I gave an answer that was accurate but general, the coach asked me to make it concrete, for example asking for a real-world example of bad labeling, or asking me to walk through the reinforcement learning process step by step rather than describing it abstractly. I revised my responses in real time based on that feedback, moving from textbook-style answers toward specific, reasoned examples grounded in the data itself. That pattern, restating an idea in the coach's terms is not the same as reasoning through it, was the clearest lesson from this activity.
+
+</p>
+
+<p>
+
 This activity sharpened how I think about training method selection as a data problem first, before it becomes an algorithm problem. Recognizing whether data is labeled or unlabeled, whether it needs a feedback loop, or whether the available examples actually represent the full range of real-world cases changes which training approach makes sense and how much confidence to place in the resulting model.
 
 </p>
 
 <p>
 
-The exploration-versus-exploitation tradeoff in reinforcement learning was the idea that stood out most, since it illustrated that a model can appear to be working correctly while still settling for a suboptimal outcome simply because it stopped searching for something better.
-
-</p>
-
-<p>
-
-Overall, this conversation strengthened my ability to reason through data characteristics before jumping to a solution, a skill that applies directly to evaluating datasets and choosing appropriate approaches in future AI and Machine Learning coursework.
+Overall, this conversation strengthened my ability to reason through data characteristics before jumping to a solution, and to communicate that reasoning clearly, a skill that applies directly to evaluating datasets and choosing appropriate approaches in future AI and Machine Learning coursework.
 
 </p>
 
@@ -197,6 +273,8 @@ Overall, this conversation strengthened my ability to reason through data charac
 <li>Identify risks such as label bias, meaningless clustering, and overfitting.</li>
 
 <li>Explain tradeoffs, such as exploration versus exploitation, in practical terms.</li>
+
+<li>Incorporate feedback in real time and revise reasoning to a more applied level.</li>
 
 <li>Communicate technical reasoning clearly and independently.</li>
 
