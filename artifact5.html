@@ -18,7 +18,7 @@
 
 <div class="logo">
 
-<a href="index.html">SVAK</a>
+<a href="about.html#contact">SVAK</a>
 
 </div>
 
@@ -56,7 +56,7 @@ Reasoning Through Training Method Decisions with an AI Coach
 
 <h2>Project Information</h2>
 
-<div class="card reveal">
+<div class="card">
 
 <p><strong>Course:</strong> Machine Learning Fundamentals</p>
 
@@ -74,14 +74,11 @@ Reasoning Through Training Method Decisions with an AI Coach
 
 <h2>Objective</h2>
 
-
-<div class="card reveal">
 <p>
 
 The objective of this activity was to practice applying machine learning training concepts directly to data-driven decisions rather than definitions alone. Each scenario required identifying what the data itself indicated, labeled versus unlabeled, structured versus exploratory, feedback-driven versus static, and using that reasoning to justify which training approach actually fit the situation.
 
 </p>
-</div>
 
 </section>
 
@@ -89,7 +86,7 @@ The objective of this activity was to practice applying machine learning trainin
 
 <h2>Process</h2>
 
-<div class="card reveal">
+<div class="card">
 
 <p>
 
@@ -119,7 +116,7 @@ I accessed the Data Challenge Scenarios Coach through the SchoolAI space provide
 
 <h2>Scenarios Explored</h2>
 
-<div class="card reveal">
+<div class="card">
 
 <h3>Supervised Learning and Label Quality</h3>
 
@@ -171,7 +168,7 @@ This scenario examined how an agent learns a strategy through trial and error, a
 
 <h2>Evidence of Engagement</h2>
 
-<div class="card reveal">
+<div class="card">
 
 <p>
 
@@ -205,7 +202,7 @@ The full recorded transcript, including all three scenarios and follow-up exchan
 
 <h2>Additional Concepts Reinforced</h2>
 
-<div class="card reveal">
+<div class="card">
 
 <p>
 
@@ -219,16 +216,105 @@ Beyond the three core scenarios, the conversation reinforced several supporting 
 
 <section>
 
+<h2>Technical Illustration: Applying the Scenarios to Sample Data</h2>
+
+<div class="card">
+
+<p>
+
+Based on instructor feedback recommending measurable results and technical demonstrations alongside conceptual reasoning, the tables and visualization below apply each scenario's logic to a small illustrative dataset. These are simplified, hand-built examples meant to demonstrate the reasoning process, not output from a trained model.
+
+</p>
+
+<h3>Supervised Learning: Invoice Payment Example</h3>
+
+<table class="comparison-table">
+<tr><th>Invoice ID</th><th>Amount</th><th>Payment Terms</th><th>Actual Outcome</th><th>Model Prediction</th></tr>
+<tr><td>INV-101</td><td>$4,200</td><td>Net 30</td><td>On-time</td><td>On-time</td></tr>
+<tr><td>INV-102</td><td>$18,900</td><td>Net 60</td><td>Late</td><td>Late</td></tr>
+<tr><td>INV-103</td><td>$950</td><td>Net 15</td><td>On-time</td><td>On-time</td></tr>
+<tr><td>INV-104</td><td>$22,000</td><td>Net 60</td><td>Late</td><td>On-time</td></tr>
+<tr><td>INV-105</td><td>$3,100</td><td>Net 30</td><td>On-time</td><td>On-time</td></tr>
+</table>
+
+<p style="margin-top:14px;">
+
+Out of 5 labeled examples, the model correctly predicted 4, an illustrative accuracy of 80%. The single miss (INV-104) is a longer payment term combined with a high invoice amount, exactly the kind of edge case that needs more varied examples in training data to learn reliably, reinforcing the label-quality point discussed earlier in this artifact.
+
+</p>
+
+<h3>Unsupervised Learning: Customer Transaction Clustering</h3>
+
+<table class="comparison-table">
+<tr><th>Customer</th><th>Avg Purchase</th><th>Visits / Month</th><th>Category Variety</th><th>Likely Segment</th></tr>
+<tr><td>Cust-A</td><td>$120</td><td>8</td><td>High</td><td>Frequent, varied shopper</td></tr>
+<tr><td>Cust-B</td><td>$310</td><td>1</td><td>Low</td><td>Occasional bulk buyer</td></tr>
+<tr><td>Cust-C</td><td>$95</td><td>7</td><td>High</td><td>Frequent, varied shopper</td></tr>
+<tr><td>Cust-D</td><td>$340</td><td>1</td><td>Low</td><td>Occasional bulk buyer</td></tr>
+<tr><td>Cust-E</td><td>$150</td><td>6</td><td>Medium</td><td>Frequent, varied shopper</td></tr>
+</table>
+
+<p style="margin-top:14px;">
+
+Grouping by average purchase amount alone would incorrectly split Cust-A and Cust-B into the same numeric range despite very different shopping behavior. Adding visit frequency and category variety produces two behaviorally meaningful segments instead, directly illustrating the clustering pitfall discussed in the scenario above.
+
+</p>
+
+<h3>Reinforcement Learning: Reward Improvement Over Attempts</h3>
+
+<p>
+
+The table below illustrates a simplified reward trend as an agent repeats the maze task, favoring moves that paid off in prior attempts.
+
+</p>
+
+<div style="margin-top:10px;">
+<div style="display:flex;align-items:center;gap:10px;margin:6px 0;">
+<span style="font-family:var(--font-mono);font-size:12px;width:80px;">Attempt 1</span>
+<div style="background:var(--accent-amber);height:14px;width:20%;border-radius:2px;"></div>
+<span style="font-family:var(--font-mono);font-size:12px;">Reward: 2</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;margin:6px 0;">
+<span style="font-family:var(--font-mono);font-size:12px;width:80px;">Attempt 2</span>
+<div style="background:var(--accent-amber);height:14px;width:35%;border-radius:2px;"></div>
+<span style="font-family:var(--font-mono);font-size:12px;">Reward: 4</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;margin:6px 0;">
+<span style="font-family:var(--font-mono);font-size:12px;width:80px;">Attempt 3</span>
+<div style="background:var(--accent-amber);height:14px;width:55%;border-radius:2px;"></div>
+<span style="font-family:var(--font-mono);font-size:12px;">Reward: 6</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;margin:6px 0;">
+<span style="font-family:var(--font-mono);font-size:12px;width:80px;">Attempt 4</span>
+<div style="background:var(--accent-teal);height:14px;width:80%;border-radius:2px;"></div>
+<span style="font-family:var(--font-mono);font-size:12px;">Reward: 8</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;margin:6px 0;">
+<span style="font-family:var(--font-mono);font-size:12px;width:80px;">Attempt 5</span>
+<div style="background:var(--accent-teal);height:14px;width:92%;border-radius:2px;"></div>
+<span style="font-family:var(--font-mono);font-size:12px;">Reward: 9</span>
+</div>
+</div>
+
+<p style="margin-top:14px;">
+
+The upward trend illustrates the exploration-to-exploitation shift discussed earlier: early attempts explore more and score lower, while later attempts favor moves that previously worked, raising the reward. Attempt 4 marks the point where the agent settles into a strong strategy, which is exactly where the earlier discussion flagged the risk of stopping exploration too soon and missing an even better path.
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
 <h2>Why I Selected This Artifact</h2>
 
-
-<div class="card reveal">
 <p>
 
 I selected this artifact because it moves beyond explaining machine learning concepts and requires applying them to decisions. Working through data-driven scenarios and defending those decisions with reasoning grounded in the data itself demonstrates a more practical, applied level of understanding than definitions alone.
 
 </p>
-</div>
 
 </section>
 
@@ -236,8 +322,6 @@ I selected this artifact because it moves beyond explaining machine learning con
 
 <h2>Professional Reflection</h2>
 
-
-<div class="card reveal">
 <p>
 
 I built this artifact for two audiences at once: my instructor, who is evaluating whether I engaged critically rather than superficially, and future readers of my portfolio, such as potential employers, who are evaluating whether I can reason through applied AI problems. Because of that, I framed the write-up around decisions and justifications rather than a simple recap of definitions, and I included a direct excerpt from the conversation as evidence rather than only summarizing it, so the reasoning is visible and verifiable rather than just asserted.
@@ -261,7 +345,6 @@ This activity sharpened how I think about training method selection as a data pr
 Overall, this conversation strengthened my ability to reason through data characteristics before jumping to a solution, and to communicate that reasoning clearly, a skill that applies directly to evaluating datasets and choosing appropriate approaches in future AI and Machine Learning coursework.
 
 </p>
-</div>
 
 </section>
 
@@ -269,7 +352,7 @@ Overall, this conversation strengthened my ability to reason through data charac
 
 <h2>Value Proposition</h2>
 
-<div class="card reveal">
+<div class="card">
 
 <p>This artifact demonstrates my ability to:</p>
 
@@ -285,6 +368,8 @@ Overall, this conversation strengthened my ability to reason through data charac
 
 <li>Incorporate feedback in real time and revise reasoning to a more applied level.</li>
 
+<li>Apply reasoning to illustrative data and visualize measurable outcomes.</li>
+
 <li>Communicate technical reasoning clearly and independently.</li>
 
 </ul>
@@ -297,14 +382,11 @@ Overall, this conversation strengthened my ability to reason through data charac
 
 <h2>Future Applications</h2>
 
-
-<div class="card reveal">
 <p>
 
 The reasoning practiced in this activity will directly support future coursework involving dataset evaluation and model selection. Being able to assess whether data is labeled, representative, and appropriately structured before selecting a training method is a foundational skill for building reliable machine learning solutions in future academic and professional projects.
 
 </p>
-</div>
 
 </section>
 
@@ -323,8 +405,6 @@ Professional Portfolio | Data Analytics | Artificial Intelligence | Machine Lear
 </p>
 
 </footer>
-
-<script src="script.js" defer></script>
 
 </body>
 
